@@ -26,6 +26,9 @@
 #include <cstdlib>
 #include <pthread.h>
 #include <iostream>
+#include <unistd.h>
+#include <string>
+#include <string.h>
 
 //using namespace std;
 
@@ -48,11 +51,18 @@ int main(int argc, char** argv) {
 
     if (argc < 2 || argc > 2)
     {
-        std::cout << "usage: " << argv[0] << " <number of threads>";
+        std::cerr << "usage: " << argv[0] << " <number of threads>\n";
         return 1;
     }
     
-    
+    for (int i = 0; i < strlen(argv[1]); ++i)
+    {
+        if (!isdigit(argv[1][i]))
+        {
+            std::cerr << argv[1][i] << " is not digit\n";
+            return 1;
+        }
+    }
     
     return 0;
 }
