@@ -24,14 +24,36 @@
  */
 
 #include <cstdlib>
+#include <pthread.h>
+#include <iostream>
 
-using namespace std;
+//using namespace std;
 
 /*
  * 
  */
+
+void * thread_function(int num)
+{
+    // TODO: add waiting for start thread function
+    
+    for (int i = 0; i < num; ++i)
+    {
+        std::cout << num << "  ";
+        sleep(1);
+    }
+}
+
 int main(int argc, char** argv) {
 
+    if (argc < 2 || argc > 2)
+    {
+        std::cout << "usage: " << argv[0] << " <number of threads>";
+        return 1;
+    }
+    
+    
+    
     return 0;
 }
 
